@@ -13,6 +13,7 @@ def adventure(input_money):
     elif response == "nope":
       print(f"You tried to get back inside the school, but a teacher caught you.\nGoodbye, {name}!")
       return
+  print("\n")
   
   # LEVEL 1
   see_wallet(wallet)
@@ -21,7 +22,7 @@ def adventure(input_money):
   print(Fore.YELLOW, f"{left_txt}a path leading somewhere...")
   print(Fore.LIGHTGREEN_EX, f"{fwd_txt}the council estate")
   print(Fore.CYAN, f"{rit_txt}a 10ft wooden fence")
-  print(Fore.RED, f"{bhd_txt}the school", Fore.WHITE)
+  print(Fore.RED, f"{bhd_txt}the school you are trying to escape", Fore.WHITE)
   while response not in directions:
     response = input("What do you choose? (A/W/D/S)\n\t--> ").upper()
   if response == 'A':
@@ -31,13 +32,14 @@ def adventure(input_money):
     print("You head into the council estate, greeted by a £10 note on the ground!\n")
     wallet += 10
   elif response == 'D':
-    print("It's too high. You lose £2.\n")
+    print("It's too high. Your wallet is loose, and you lose £2.\n")
     wallet -= 2
-    see_wallet(wallet)
-    response = "" #restarts if-statement
+    print("You decide to walk into the council estate.")
+    #response = "" #restarts while loop
   elif response == 'S':
     print(f"You chose detention.\nSo long, {name}!")
     return
+  print("\n")
   
   # LEVEL 2
   see_wallet(wallet)
@@ -67,7 +69,7 @@ left_txt = "A | Left:\t\t"
 fwd_txt = "W | Forward:\t"
 rit_txt = "D | Right:\t\t"
 bhd_txt = "S | Behind:\t"
-money = 2 #starting amount in wallet
+money = 3 #starting amount in wallet
 
 # Introduction
 print("<-- ESCAPE SCHOOL -->")
