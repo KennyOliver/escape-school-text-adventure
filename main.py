@@ -3,7 +3,7 @@ from colorama import Fore, Back
 def adventure(input_money):
   wallet = input_money
   
-  # STAGE 1
+  # STAGE 0
   response = ""
   while response not in yes_no:
     response = input("Would you like to climb over the fence? yep/nope\n\t--> ").lower()
@@ -14,38 +14,36 @@ def adventure(input_money):
       print(f"You tried to get back inside the school, but a teacher caught you.\nGoodbye, {name}!")
       return
   
-  # STAGE 2
+  # LEVEL 1
   print("A caretaker is walking towards the fence to see what the sound was!\n\nYou need to leave. QUICK!")
   response = ""
-  print(Fore.RED, f"{left_txt}a path leading somewhere...")
+  print(Fore.YELLOW, f"{left_txt}a path leading somewhere...")
   print(Fore.LIGHTGREEN_EX, f"{fwd_txt}the council estate")
-  print(Fore.YELLOW, f"{rit_txt}a 10ft wooden fence")
-  print(Fore.CYAN, f"{bhd_txt}the school", Fore.WHITE)
+  print(Fore.CYAN, f"{rit_txt}a 10ft wooden fence")
+  print(Fore.RED, f"{bhd_txt}the school", Fore.WHITE)
   while response not in directions:
     response = input("What do you choose? (A/W/S/D)\n\t--> ").upper()
   if response == 'A':
     print(f"You get caught by a teacher on break duty.\nYOU LOSE, {name}!\n\nPS: They bought some candy with your money.")
     return
   elif response == 'W':
-    print("You head into the council estate.\n")
+    print("You head into the council estate, greeted by a £10 note on the ground!\n")
     wallet += 10
-    see_wallet()
+    see_wallet(wallet)
   elif response == 'S':
     print("It's too high.\n")
     wallet -= 5
-    see_wallet()
+    see_wallet(wallet)
     response = "" #restarts if-statement
   elif response == 'D':
     print(f"You chose detention.\nSo long, {name}!")
     return
   
-  # STAGE 3
+  # LEVEL 2
   print("You see two roads ahead of you.")
   response = ""
-  print(Fore.RED, f"{left_txt}a path leading somewhere...")
-  print(Fore.LIGHTGREEN_EX, f"{fwd_txt}a small group of run-down bungalows")
-  print(Fore.YELLOW, f"{rit_txt}a 10ft wooden fence")
-  print(Fore.CYAN, f"{bhd_txt}the school")
+  print(Fore.YELLOW, f"{left_txt}more terraced houses")
+  print(Fore.CYAN, f"{rit_txt}a children\'s playground")
   print(Fore.WHITE, "\n")
   while response not in directions:
     response = input("What direction do you move? (A/W/S/D)\n\t--> ").upper()
@@ -54,13 +52,13 @@ def adventure(input_money):
     return
   elif response == 'W':
     print("You head deeper into the council estate.\n")
-    money += 10
-    get_money()
+    wallet += 10
+    see_wallet(wallet)
   elif response == 'S':
     print("It's too high.\n")
     money -= 5
-    get_money()
-    response = "" #restarts if-statement
+    see_wallet(wallet)
+    response = ""
   elif response == 'D':
     print(f"You leave the council estate. So long, {name}.")
     return
