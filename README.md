@@ -4,7 +4,7 @@
 
 [![](https://repl.it/badge/github/KennyOliver/escape-school-text-adventure)](https://repl.it/@KennyOliver/escape-school-text-adventure)
 
-Escape school in a text adventure game!
+Escape school in an epic text adventure game!
 
 ---
 Kenny Oliver ©2021
