@@ -15,6 +15,7 @@ def adventure(input_money):
       return
   
   # LEVEL 1
+  see_wallet(wallet)
   print("A caretaker is walking towards the fence to see what the sound was!\n\nYou need to leave. QUICK!")
   response = ""
   print(Fore.YELLOW, f"{left_txt}a path leading somewhere...")
@@ -29,10 +30,9 @@ def adventure(input_money):
   elif response == 'W':
     print("You head into the council estate, greeted by a £10 note on the ground!\n")
     wallet += 10
-    see_wallet(wallet)
   elif response == 'D':
-    print("It's too high.\n")
-    wallet -= 5
+    print("It's too high. You lose £2.\n")
+    wallet -= 2
     see_wallet(wallet)
     response = "" #restarts if-statement
   elif response == 'S':
@@ -40,18 +40,20 @@ def adventure(input_money):
     return
   
   # LEVEL 2
-  print("You see two roads ahead of you.")
+  see_wallet(wallet)
+  print("You see two places ahead of you.")
   response = ""
   print(Fore.YELLOW, f"{left_txt}more terraced houses")
-  print(Fore.CYAN, f"{rit_txt}a children\'s playground")
-  print(Fore.WHITE, "\n")
-  while response not in directions:
-    response = input("What direction do you move? (A/W/D/S)\n\t--> ").upper()
+  print(Fore.CYAN, f"{rit_txt}a children\'s playground", Fore.WHITE)
+  while response not in ['A','D']:
+    response = input("\t--> ").upper()
   if response == 'A':
-    print(f"You get caught by a teacher on break duty.\nYOU LOSE, {name}!")
+    print(f"You encounter a vicious dog - oh dear!\nYOU LOSE, {name}!")
     return
   elif response == 'D':
-    print(f"You leave the council estate. So long, {name}.")
+    print("It costs £1 to open the gate.")
+    wallet -= 1
+    print(f"You waste time playing on the playground. However, you find a hidden parting in some bushes, and wriggle through.")
     return
 #====================
 def see_wallet(amount):
@@ -65,10 +67,10 @@ left_txt = "A | Left:\t\t"
 fwd_txt = "W | Forward:\t"
 rit_txt = "D | Right:\t\t"
 bhd_txt = "S | Behind:\t"
-money = 1
+money = 2 #starting amount in wallet
 
 # Introduction
-print("<-- ESCAPE SCHOOL!!! -->")
+print("<-- ESCAPE SCHOOL -->")
 name = input("What's your name?\n\t--> ")
 print(f"\nHey, {name}! Let's escape school!")
 print("You find yourself on the edge of the field.")
