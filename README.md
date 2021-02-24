@@ -1,4 +1,4 @@
-# school-spree :running_man::school:
+# school-spree :running_man: :school:
 
 ![image](https://www.codefactor.io/repository/github/KennyOliver/school-spree/badge?style=for-the-badge)
 
